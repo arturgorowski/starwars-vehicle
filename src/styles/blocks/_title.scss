@@ -1,0 +1,17 @@
+@import "src/styles/settings/colors";
+@import "src/styles/settings/fonts";
+@import "src/styles/tools/mixins";
+@import "node_modules/reflex-grid/scss/includes/variables";
+
+.b-title {
+
+    &__starship {
+        font-size: $font-size-24;
+        padding: 25px 0;
+
+        @include mediaQueryMin($reflex-sm) {
+            font-size: $font-size-32;
+            padding: 50px 0;
+        }
+    }
+}
