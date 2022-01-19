@@ -8,6 +8,7 @@
     flex-direction: column;
     background-color: $c-dark-oxford;
     padding: 20px;
+    width: 100%;
 
     @include mediaQueryMin($reflex-sm) {
         padding: 50px 100px 100px;

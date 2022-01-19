@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Starships} from "../../_models/starships";
 import {ActivatedRoute} from "@angular/router";
-import {StarshipStorage} from "../../_helpers/starship-storage";
+import {StarshipService} from "../../_services/starship.service";
 
 @Component({
     selector: 'app-starship-details',
@@ -11,7 +11,8 @@ import {StarshipStorage} from "../../_helpers/starship-storage";
 export class StarshipDetailsComponent implements OnInit {
 
     starship: Starships;
-    constructor(protected route: ActivatedRoute) {
+    constructor(protected route: ActivatedRoute,
+                protected starshipService: StarshipService) {
     }
 
     ngOnInit(): void {
@@ -23,6 +24,6 @@ export class StarshipDetailsComponent implements OnInit {
     }
 
     addToCompare(starship: Starships) {
-        StarshipStorage.addStarship(starship);
+        this.starshipService.addStarship(starship);
     }
 }

@@ -6,7 +6,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {StarshipsRepositoryService} from "./services/starships-repository.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {StarshipStorage} from "../_helpers/starship-storage";
+import {StarshipService} from "../_services/starship.service";
 
 @Component({
     selector: 'app-starships',
@@ -21,7 +21,8 @@ export class StarshipsComponent implements OnInit, AfterViewInit {
 
     constructor(protected route: ActivatedRoute,
                 protected starshipsRepository: StarshipsRepositoryService,
-                protected snackBar: MatSnackBar) {
+                protected snackBar: MatSnackBar,
+                protected starshipService: StarshipService) {
     }
 
     @ViewChild(MatSort) sort!: MatSort;
@@ -41,7 +42,7 @@ export class StarshipsComponent implements OnInit, AfterViewInit {
     }
 
     addToCompare(starship: Starships) {
-        StarshipStorage.addStarship(starship);
+        this.starshipService.addStarship(starship);
     }
 
     onPageChange(event: PageEvent) {
