@@ -7,7 +7,7 @@ import {Injectable} from "@angular/core";
 export class LoaderService {
 
     private isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    cast: Observable<boolean> = this.isLoading.asObservable();
+    cast$: Observable<boolean> = this.isLoading.asObservable();
 
     showLoader(): void {
         this.isLoading.next(true);

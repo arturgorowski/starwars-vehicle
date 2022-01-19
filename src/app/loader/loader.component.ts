@@ -18,7 +18,7 @@ export class LoaderComponent implements OnInit {
     }
 
     castLoader() {
-        this.loaderService.cast
+        this.loaderService.cast$
             .pipe(delay(0))
             .subscribe((response: boolean) => this.isLoading = response)
     }
