@@ -17,7 +17,6 @@ export class StarshipService {
 
     private loadStarships() {
         const starships: Starships[] = StarshipStorage.getStarships();
-        console.log(starships);
         if (starships.length) {
             this.starships.next(starships);
         }
