@@ -1,0 +1,23 @@
+<div class="l-container">
+    <div class="l-grid">
+
+        <div class="starship-comparer">
+
+            <div class="starship-comparer__header">
+                <div class="b-title__starship">
+                    Starship Comparer
+                </div>
+
+                <div class="starship-comparer__clear-all" (click)="removeAllStarship()">Clear all</div>
+            </div>
+
+
+            <div *ngFor="let starship of starships">
+                <div (click)="removeStarship(starship)">x</div>
+                {{starship.name}},
+            </div>
+
+        </div>
+
+    </div>
+</div>

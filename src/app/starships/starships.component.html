@@ -1,6 +1,10 @@
 <div class="l-container">
     <div class="l-grid">
 
+        <div class="b-title__starship">
+            Starship List
+        </div>
+
         <div class="mat-elevation-z8 u-w-100">
             <table mat-table [dataSource]="dataSource" matSort>
 
@@ -32,14 +36,15 @@
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                <tr mat-row *matRowDef="let starship; columns: displayedColumns"></tr>
 
             </table>
 
             <mat-paginator [length]="starshipsResult.count" (page)="onPageChange($event)"
-                           [pageSizeOptions]="[10]" hidePageSize
-                           aria-label="Select page of periodic elements">
+                           [pageSizeOptions]="[10]" hidePageSize>
             </mat-paginator>
         </div>
     </div>
 </div>
+
+<app-starship-comparer></app-starship-comparer>

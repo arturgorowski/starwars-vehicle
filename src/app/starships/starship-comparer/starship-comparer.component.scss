@@ -1,0 +1,26 @@
+@import "src/styles/settings/colors";
+@import "src/styles/settings/fonts";
+@import "src/styles/tools/mixins";
+@import "node_modules/reflex-grid/scss/includes/variables";
+
+.starship-comparer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    width: 100%;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__clear-all {
+        font-size: $font-size-15;
+
+        @include mediaQueryMin($reflex-xs) {
+            font-size: $font-size-18;
+            cursor: pointer;
+        }
+    }
+}
