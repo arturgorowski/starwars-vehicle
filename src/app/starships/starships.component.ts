@@ -33,12 +33,17 @@ export class StarshipsComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.dataSource.sort = this.sort;
+        this.setSort();
     }
 
     loadStarships() {
         this.starshipsResult = this.route.snapshot.data['starships'];
         this.dataSource = new MatTableDataSource(this.starshipsResult.results);
+        this.setSort();
+    }
+
+    setSort() {
+        this.dataSource.sort = this.sort;
     }
 
     addToCompare(starship: Starships) {
@@ -53,6 +58,7 @@ export class StarshipsComponent implements OnInit, AfterViewInit {
             .subscribe((result: StarshipsResult) => {
                 this.starshipsResult = result;
                 this.dataSource = new MatTableDataSource(result.results);
+                this.setSort();
             },() => this.snackBar.open('Error!'));
     }
 }
