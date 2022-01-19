@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~node_modules/reflex-grid/scss/includes/variables";
-@import "settings/settings";
-@import "~node_modules/reflex-grid/scss/reflex.scss";
+@import "node_modules/reflex-grid/scss/includes/variables";
+@import "node_modules/reflex-grid/scss/reflex.scss";
 
+@import "settings/settings";
 @import "global/global";
 @import "tools/tools";
 @import "utilities/utilities";
