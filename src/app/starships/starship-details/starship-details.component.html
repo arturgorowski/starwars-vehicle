@@ -1,1 +1,36 @@
-<p>starship-details works!</p>
+<div class="l-container">
+    <div class="l-grid">
+
+        <div class="starship-details">
+
+            <div class="starship-details__buttons">
+                <div [routerLink]="['/']">Back</div>
+                <div (click)="addToCompare(starship)">Add to compare</div>
+            </div>
+
+            <div class="starship-details__name">{{starship.name}}</div>
+
+            <div class="starship-details__information">
+                <div class="starship-details__information--key">Passengers: </div>
+                <div class="starship-details__information--value">{{starship.passengers}} persons</div>
+            </div>
+
+            <div class="starship-details__information">
+                <div class="starship-details__information--key">Cargo capacity: </div>
+                <div class="starship-details__information--value">{{starship.cargo_capacity}} pounds</div>
+            </div>
+
+            <div class="starship-details__information">
+                <div class="starship-details__information--key">Crew: </div>
+                <div class="starship-details__information--value">{{starship.crew}} persons</div>
+            </div>
+
+            <div class="starship-details__information">
+                <div class="starship-details__information--key">Length: </div>
+                <div class="starship-details__information--value">{{starship.length}} meters</div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

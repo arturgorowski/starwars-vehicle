@@ -1,0 +1,71 @@
+@import "src/styles/settings/colors";
+@import "src/styles/settings/fonts";
+@import "src/styles/tools/mixins";
+@import "node_modules/reflex-grid/scss/includes/variables";
+
+.starship-details {
+    display: flex;
+    flex-direction: column;
+    background-color: $c-dark-oxford;
+    padding: 20px;
+
+    @include mediaQueryMin($reflex-sm) {
+        padding: 50px 100px 100px;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 25px;
+        font-size: $font-size-12;
+        color: $c-white;
+
+        @include mediaQueryMin($reflex-xs) {
+            flex-direction: row;
+            justify-content: space-between;
+            padding-bottom: 35px;
+            font-size: $font-size-14;
+
+            div {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__name {
+        font-size: $font-size-15;
+        color: $c-white;
+        padding-bottom: 30px;
+
+        @include mediaQueryMin($reflex-sm) {
+            font-size: $font-size-32;
+            padding-bottom: 50px;
+        }
+    }
+
+    &__information {
+        display: flex;
+        align-items: center;
+        font-size: $font-size-10;
+        padding-bottom: 15px;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        @include mediaQueryMin($reflex-sm) {
+            font-size: $font-size-15;
+            padding-bottom: 25px;
+        }
+
+        &--key {
+            color: $c-orange;
+        }
+
+        &--value {
+            padding-left: 10px;
+            color: $c-bombay;
+            font-weight: $font-weight-bold;
+        }
+    }
+}
