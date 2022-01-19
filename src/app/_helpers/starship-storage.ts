@@ -61,8 +61,8 @@ export class StarshipStorage {
         this.removeStarshipsItem(KEY_STARSHIP, starships);
     }
 
-    static getStarships(): StarshipList {
-        return this.getStarshipsItem();
+    static getStarships(): Starships[] {
+        return this.getStarshipsItem().starships;
     }
 
     static clearData(): void {
