@@ -32,4 +32,9 @@ export class StarshipService {
         this.starships.next(StarshipStorage.getStarships());
     }
 
+    removeAllStarship() {
+        StarshipStorage.clearData();
+        this.starships.next(StarshipStorage.getStarships());
+    }
+
 }
