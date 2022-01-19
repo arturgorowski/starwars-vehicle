@@ -1,10 +1,12 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Starships, StarshipsResult} from "../_models/starships";
 import {ActivatedRoute} from "@angular/router";
-import {MatSort, Sort} from "@angular/material/sort";
-import {LiveAnnouncer} from "@angular/cdk/a11y";
+import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
+import {StarshipsRepositoryService} from "./services/starships-repository.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {StarshipStorage} from "../_helpers/starship-storage";
 
 @Component({
     selector: 'app-starships',
@@ -14,13 +16,12 @@ import {MatPaginator, PageEvent} from "@angular/material/paginator";
 export class StarshipsComponent implements OnInit, AfterViewInit {
 
     starshipsResult!: StarshipsResult;
-    starships: Starships[] = [];
     displayedColumns: string[] = ['name', 'model', 'cargo_capacity', 'action']
     dataSource!: MatTableDataSource<Starships>;
-    // dataSource = new MatTableDataSource(this.starships);
 
     constructor(protected route: ActivatedRoute,
-                private _liveAnnouncer: LiveAnnouncer) {
+                protected starshipsRepository: StarshipsRepositoryService,
+                protected snackBar: MatSnackBar) {
     }
 
     @ViewChild(MatSort) sort!: MatSort;
@@ -32,28 +33,25 @@ export class StarshipsComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
     }
 
     loadStarships() {
         this.starshipsResult = this.route.snapshot.data['starships'];
-        this.starships = this.starshipsResult.results;
-        this.dataSource = new MatTableDataSource(this.starships);
-    }
-
-    announceSortChange(sortState: Sort) {
-        if (sortState.direction) {
-            this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-        } else {
-            this._liveAnnouncer.announce('Sorting cleared');
-        }
+        this.dataSource = new MatTableDataSource(this.starshipsResult.results);
     }
 
     addToCompare(starship: Starships) {
-        console.log(starship)
+        StarshipStorage.addStarship(starship);
     }
 
-    nextPage(event: PageEvent) {
-        console.log(event);
+    onPageChange(event: PageEvent) {
+        const starshipsUrl = event.pageIndex > event.previousPageIndex
+            ? this.starshipsResult.next : this.starshipsResult.previous;
+
+        this.starshipsRepository.getStarships(starshipsUrl)
+            .subscribe((result: StarshipsResult) => {
+                this.starshipsResult = result;
+                this.dataSource = new MatTableDataSource(result.results);
+            },() => this.snackBar.open('Error!'));
     }
 }

@@ -8,12 +8,12 @@ import {Observable} from "rxjs";
 @Injectable({
     providedIn: 'root'
 })
-export class StarshipsResolveService implements Resolve<StarshipsResult[]> {
+export class StarshipsResolveService implements Resolve<StarshipsResult> {
 
     constructor(protected starshipsRepository: StarshipsRepositoryService) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<StarshipsResult[]> | Promise<StarshipsResult[]> | StarshipsResult[] {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<StarshipsResult> | Promise<StarshipsResult> | StarshipsResult {
         return this.starshipsRepository.getStarships();
     }
 }

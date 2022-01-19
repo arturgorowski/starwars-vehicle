@@ -17,7 +17,7 @@ const routes: Routes = [
                 {
                     path: 'details',
                     component: <any>StarshipDetailsComponent,
-                    resolve: {starships: StarshipDetailsResolveService}
+                    resolve: {starshipDetails: StarshipDetailsResolveService}
                 }
             ]
         },

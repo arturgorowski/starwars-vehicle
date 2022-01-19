@@ -13,8 +13,8 @@ export class StarshipsRepositoryService {
     constructor(private http: HttpClient) {
     }
 
-    getStarships(nextPage: string = this.starshipsUrl): Observable<StarshipsResult[]> {
-        return this.http.get<StarshipsResult[]>(nextPage);
+    getStarships(nextPage: string = this.starshipsUrl): Observable<StarshipsResult> {
+        return this.http.get<StarshipsResult>(nextPage);
     }
 
     getStarshipDetails(url: string): Observable<Starships> {
