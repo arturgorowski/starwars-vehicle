@@ -1,3 +1,16 @@
+# How to run the app
+
+- clone the repositories
+- npm install
+- ng serve
+
+Used technologies:
+
+- Angular CLI: 12.2.15 
+- Node: 14.17.6
+- Package Manager: npm 6.14.15
+
+
 # StarwarsVehicle
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
