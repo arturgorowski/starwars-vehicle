@@ -1,8 +1,13 @@
 # How to run the app
 
 - clone the repositories
-- npm install
-- ng serve
+- `npm install`
+  
+To run app:
+- `ng serve`
+
+To build ssr: 
+- `npm run build:ssr` and then `npm run serve:ssr`
 
 Used technologies:
 

@@ -32,7 +32,7 @@ const MAT_SNACK_BAR_SETTINGS: MatSnackBarConfig = {
         ComparedItemComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
