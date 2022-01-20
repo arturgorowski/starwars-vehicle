@@ -9,6 +9,10 @@
     padding-bottom: 150px;
     width: 100%;
 
+    @include mediaQueryMax($reflex-xs) {
+        padding: 0 15px 150px;
+    }
+
     &__header {
         display: flex;
         justify-content: space-between;
@@ -21,6 +25,37 @@
         @include mediaQueryMin($reflex-xs) {
             font-size: $font-size-18;
             cursor: pointer;
+        }
+    }
+
+    &__box-container {
+        display: grid;
+        margin: auto;
+        grid-template-columns: repeat(1, 100%);
+        row-gap: 10px;
+
+        @include mediaQueryMin($reflex-sm) {
+            grid-template-columns: repeat(2, max-content);
+            column-gap: 30px;
+            row-gap: 30px;
+        }
+
+        @include mediaQueryMin($reflex-lg) {
+            grid-template-columns: repeat(3, max-content);
+            column-gap: 30px;
+            row-gap: 30px;
+        }
+
+        @include mediaQueryMin($reflex-xlg) {
+            grid-template-columns: repeat(4, max-content);
+        }
+    }
+
+    &__no-data {
+        font-size: $font-size-15;
+
+        @include mediaQueryMin($reflex-xs) {
+            font-size: $font-size-18;
         }
     }
 }

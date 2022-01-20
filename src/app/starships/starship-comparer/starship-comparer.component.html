@@ -11,11 +11,23 @@
                 <div class="starship-comparer__clear-all" (click)="removeAllStarship()">Clear all</div>
             </div>
 
-
-            <div *ngFor="let starship of starships">
-                <div (click)="removeStarship(starship)">x</div>
-                {{starship.name}},
+            <div *ngIf="starships.length; else noItemToCompare" class="starship-comparer__box-container">
+                <ng-container *ngFor="let starship of starships">
+                    <app-compared-item [starship]="starship"
+                                       [isBestPrice]="starship.cost_in_credits == bestPrice"
+                                       [isTheLongest]="starship.length == bestLength"
+                                       [isTheBestCapacity]="starship.cargo_capacity == bestCargoCapacity"
+                                       [isTheFastest]="starship.max_atmosphering_speed == bestMaxSpeed"
+                                       [isTheBestMGLT]="starship.MGLT == bestMGLTValue">
+                    </app-compared-item>
+                </ng-container>
             </div>
+
+            <ng-template #noItemToCompare>
+                <div class="starship-comparer__no-data">
+                    No starships to compare
+                </div>
+            </ng-template>
 
         </div>
 

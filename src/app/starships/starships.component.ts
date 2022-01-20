@@ -16,7 +16,7 @@ import {StarshipService} from "../_services/starship.service";
 export class StarshipsComponent implements OnInit, AfterViewInit {
 
     starshipsResult!: StarshipsResult;
-    displayedColumns: string[] = ['name', 'model', 'cargo_capacity', 'action']
+    displayedColumns: string[] = ['name', 'model', 'action']
     dataSource!: MatTableDataSource<Starships>;
 
     constructor(protected route: ActivatedRoute,

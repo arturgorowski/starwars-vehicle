@@ -1,0 +1,31 @@
+<div class="compared-item">
+    <mat-icon class="compared-item__icon" (click)="removeStarship(starship)">close</mat-icon>
+    <div class="compared-item__name">{{starship.name}}</div>
+
+    <div class="compared-item__row" [class.the-best]="isBestPrice">
+        <div>Price:</div>
+        <div>{{starship.cost_in_credits}} $</div>
+    </div>
+
+    <div class="compared-item__row" [class.the-best]="isTheLongest">
+        <div>Length:</div>
+        <div>{{starship.length}} m</div>
+    </div>
+
+    <div class="compared-item__row" [class.the-best]="isTheBestCapacity">
+        <div>Cargo Capacity:</div>
+        <div>{{starship.cargo_capacity}} kg</div>
+    </div>
+
+    <div class="compared-item__row" [class.the-best]="isTheFastest">
+        <div>Max Speed:</div>
+        <div>{{starship.max_atmosphering_speed}} km/h</div>
+    </div>
+
+    <div class="compared-item__row" [class.the-best]="isTheBestMGLT">
+        <div>Megalight:</div>
+        <div>{{starship.MGLT}}</div>
+    </div>
+
+
+</div>

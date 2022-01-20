@@ -14,6 +14,8 @@ import {LoaderInterceptor} from "./_interceptors/loader.interceptor";
 import {LoaderComponent} from './loader/loader.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {StarshipComparerComponent} from "./starships/starship-comparer/starship-comparer.component";
+import { ComparedItemComponent } from './starships/starship-comparer/compared-item/compared-item.component';
+import {MatIconModule} from "@angular/material/icon";
 
 const MAT_SNACK_BAR_SETTINGS: MatSnackBarConfig = {
     duration: 5000,
@@ -26,7 +28,8 @@ const MAT_SNACK_BAR_SETTINGS: MatSnackBarConfig = {
         StarshipsComponent,
         StarshipDetailsComponent,
         LoaderComponent,
-        StarshipComparerComponent
+        StarshipComparerComponent,
+        ComparedItemComponent
     ],
     imports: [
         BrowserModule,
@@ -37,7 +40,8 @@ const MAT_SNACK_BAR_SETTINGS: MatSnackBarConfig = {
         MatSortModule,
         MatPaginatorModule,
         MatSnackBarModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatIconModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},

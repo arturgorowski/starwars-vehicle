@@ -1,4 +1,13 @@
+@import "src/styles/tools/mixins";
+@import "node_modules/reflex-grid/scss/includes/variables";
 
+.starships {
+    width: 100%;
+
+    @include mediaQueryMax($reflex-xs) {
+        padding: 0 15px;
+    }
+}
 
 table {
     width: 100%;

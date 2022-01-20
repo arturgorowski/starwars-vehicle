@@ -1,0 +1,65 @@
+@import "src/styles/settings/colors";
+@import "src/styles/settings/fonts";
+@import "src/styles/tools/mixins";
+@import "node_modules/reflex-grid/scss/includes/variables";
+
+.compared-item {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $c-dark-oxford;
+    background-color: $c-yellow;
+    min-width: 300px;
+    position: relative;
+
+    @include mediaQueryMin($reflex-xs) {
+        width: 300px;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        @include mediaQueryMin($reflex-sm) {
+            cursor: pointer;
+        }
+    }
+
+    &__name {
+        font-size: $font-size-15;
+        padding: 15px;
+        font-weight: $font-weight-bold;
+
+        @include mediaQueryMin($reflex-sm) {
+            font-size: $font-size-18;
+            padding: 20px 15px;
+        }
+    }
+
+    &__row {
+        display: flex;
+        padding: 10px 15px;
+        font-size: $font-size-13;
+        background-color: $c-red;
+        color: $c-dark-oxford;
+        align-items: center;
+
+        @include mediaQueryMin($reflex-sm) {
+            font-size: $font-size-15;
+            padding: 10px 15px;
+        }
+
+        &.the-best {
+            background-color: $c-green !important;
+            color: $c-dark-oxford !important;
+        }
+
+        div {
+            width: 50%;
+
+            &:first-child {
+                font-weight: $font-weight-bold;
+            }
+        }
+    }
+}

@@ -13,6 +13,12 @@ export class StarshipComparerComponent implements OnInit, OnDestroy {
     starships: Starships[];
     subscription: Subscription;
 
+    bestPrice: number;
+    bestLength: number;
+    bestCargoCapacity: number;
+    bestMaxSpeed: number;
+    bestMGLTValue: number;
+
     constructor(protected starshipService: StarshipService) {
     }
 
@@ -22,15 +28,44 @@ export class StarshipComparerComponent implements OnInit, OnDestroy {
 
     loadStarships() {
         this.subscription = this.starshipService.cast$.subscribe(
-            (starships: Starships[]) => this.starships = starships);
-    }
-
-    removeStarship(starship: Starships) {
-        this.starshipService.removeStarship(starship);
+            (starships: Starships[]) => {
+                this.starships = starships;
+                this.compareStarships();
+            });
     }
 
     removeAllStarship() {
         this.starshipService.removeAllStarship();
+    }
+
+    compareStarships() {
+        this.bestPrice = this.findMinValue('cost_in_credits');
+        this.bestLength = this.findMaxValue('length');
+        this.bestCargoCapacity = this.findMaxValue('cargo_capacity');
+        this.bestMaxSpeed = this.findMaxValue('max_atmosphering_speed');
+        this.bestMGLTValue = this.findMaxValue('MGLT');
+    }
+
+    findMinValue(key: string): number {
+        return Math.min(...this.starships
+            .filter((item: Starships) => item[key] !== 'unknown' && item[key] !== 'n/a')
+            .map((item: Starships) => parseFloat(item[key]))
+        );
+    }
+
+    findMaxValue(key: string): number {
+        return Math.max(...this.starships
+            .filter((item: Starships) => item[key] !== 'unknown' && item[key] !== 'n/a')
+            .map((item: Starships) => {
+                if (key === 'length') {
+                    item[key] = item[key].replace(',', '.');
+                }
+                if (key === 'max_atmosphering_speed') {
+                    item[key] = item[key].replace('km', '');
+                }
+                return parseFloat(item[key]);
+            })
+        );
     }
 
     ngOnDestroy() {
